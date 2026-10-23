@@ -1,0 +1,23 @@
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["alembic/versions"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+markers = [
+    "unit: pure business-logic tests, no database",
+    "integration: tests that use the database",
+    "regression: guards a previously fixed defect",
+]
+
+[tool.coverage.run]
+source = ["app"]
+branch = true
+
+[tool.ruff.lint.isort]
+known-third-party = ["alembic"]
